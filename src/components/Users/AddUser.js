@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import classes from "./AddUser.module.css";
-import Button from "../UI/Button";
 import Card from "../UI/Card";
+import Button from "../UI/Button";
+import UserList from "../UI/UserList";
 
 const AddUsers = (props) => {
   const [enteredUserName, setEnteredUserName] = useState("");
@@ -27,25 +28,31 @@ const AddUsers = (props) => {
   };
 
   return (
-    <Card className={classes.input}>
-      <form onSubmit={submitHandler}>
-        <label htmlFor="userName">UserName</label>
-        <input
-          id="name"
-          type="text"
-          value={enteredUserName}
-          onChange={usernameChangeHandler}
-        ></input>
-        <label htmlFor="age">Age(Years)</label>
-        <input
-          type="number"
-          id="age"
-          value={enteredAge}
-          onChange={ageChangeHandler}
-        ></input>
-        <Button type="submit">Add User</Button>
-      </form>
-    </Card>
+    <div>
+      <Card className={classes.input}>
+        <form onSubmit={submitHandler}>
+          <label htmlFor="userName">UserName</label>
+          <input
+            id="name"
+            type="text"
+            value={enteredUserName}
+            onChange={usernameChangeHandler}
+          ></input>
+          <label htmlFor="age">Age(Years)</label>
+          <input
+            type="number"
+            id="age"
+            value={enteredAge}
+            onChange={ageChangeHandler}
+          ></input>
+          <Button type="submit">Add User</Button>
+        </form>
+      </Card>
+      <UserList
+        info={`${enteredUserName} ${enteredAge}`}
+        className={classes.Card}
+      />
+    </div>
   );
 };
 
