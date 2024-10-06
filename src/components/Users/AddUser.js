@@ -3,17 +3,19 @@ import classes from "./AddUser.module.css";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import UserList from "./UserList";
+import App from "../../App";
 
 const AddUsers = (props) => {
   const [enteredUserName, setEnteredUserName] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
 
   const submitHandler = (event) => {
+    event.preventDefault();
     if (enteredUserName.trim().length === 0 || enteredAge.trim().length === 0)
       return;
     if (+enteredAge < 0) return;
-    event.preventDefault();
-    console.log(enteredUserName, enteredAge);
+
+    props.onAddUser(enteredUserName, enteredAge);
 
     setEnteredUserName("");
     setEnteredAge("");
