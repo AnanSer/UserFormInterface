@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from "./AddUser.module.css";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
-import UserList from "../UI/UserList";
+import UserList from "./UserList";
 
 const AddUsers = (props) => {
   const [enteredUserName, setEnteredUserName] = useState("");
@@ -48,10 +48,6 @@ const AddUsers = (props) => {
           <Button type="submit">Add User</Button>
         </form>
       </Card>
-      <UserList
-        info={`${enteredUserName} ${enteredAge}`}
-        className={classes.Card}
-      />
     </div>
   );
 };
